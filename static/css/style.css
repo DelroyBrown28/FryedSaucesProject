@@ -4,6 +4,7 @@ body {
   color: #8c92a0;
   font-weight: 300;
   font-size: 16px;
+
 }
 
 ::-moz-selection {
@@ -98,6 +99,13 @@ a:hover {
   -webkit-box-shadow: 0 5px 20px -7px rgba(0, 0, 0, 0.9) !important;
   box-shadow: 0 5px 20px -7px rgba(0, 0, 0, 0.9) !important;
   top: -2px;
+}
+
+#id_name,
+#id_email,
+#id_message {
+  width: 100%;
+
 }
 
 .form-control {
