@@ -10,7 +10,7 @@ SECRET_KEY = env('SECRET_KEY')
 
 DEBUG = env('DEBUG')
 
-ALLOWED_HOSTS = [*]
+ALLOWED_HOSTS = []
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
@@ -94,7 +94,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 STATIC_ROOT = os.path.join(BASE_DIR, "static_root")
 MEDIA_URL = '/media/'
-MEDIA_ROOT = ps.path.join(BASE_DIR, "media")
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 
 # Extra security settings
