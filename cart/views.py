@@ -29,7 +29,8 @@ class ProductDetailView(generic.FormView):
         order = get_or_set_order_session(self.request)
         product = self.get_object()
         # A check to see if the item already exists in the cart
-        item_filter = order.items.filter(product=product, size=form.cleaned_data['size'])
+        item_filter = order.items.filter(
+            product=product, size=form.cleaned_data['size'])
 
         if item_filter.exists():
             item = item_filter.first()
@@ -48,4 +49,13 @@ class ProductDetailView(generic.FormView):
     def get_context_data(self, **kwargs):
         context = super(ProductDetailView, self).get_context_data(**kwargs)
         context['product'] = self.get_object()
+        return context
+
+
+class CartView(generic.TemplateView):
+    template_name = "cart/cart.html"
+
+    def get_context_data(self, **kwargs):
+        context = super(CartView, self).get_context_data(**kwargs)
+        context["order"] = get_or_set_order_session(self.request)
         return context

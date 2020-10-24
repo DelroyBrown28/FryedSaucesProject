@@ -1,5 +1,6 @@
+
 from django import forms
-from .models import OrderItem, SizeVariation, Product
+from .models import OrderItem, Product, SizeVariation
 
 
 class AddToCartForm(forms.ModelForm):
