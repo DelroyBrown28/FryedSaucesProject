@@ -28,9 +28,11 @@ class ProductDetailView(generic.FormView):
     def form_valid(self, form):
         order = get_or_set_order_session(self.request)
         product = self.get_object()
-        # A check to see if the item already exists in the cart
+
         item_filter = order.items.filter(
-            product=product, size=form.cleaned_data['size'])
+            product=product,
+            size=form.cleaned_data['size'],
+        )
 
         if item_filter.exists():
             item = item_filter.first()
@@ -45,7 +47,6 @@ class ProductDetailView(generic.FormView):
 
         return super(ProductDetailView, self).form_valid(form)
 
-    # Grabs image for detail view and other media
     def get_context_data(self, **kwargs):
         context = super(ProductDetailView, self).get_context_data(**kwargs)
         context['product'] = self.get_object()
