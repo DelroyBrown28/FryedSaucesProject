@@ -42,7 +42,7 @@
                                     <small>Size: {{ item.size.name }}</small>
                                     <small>Colour: {{ item.colour.name }}</small>
                                 </td>
-                                <td>${{ item.product.get_price }}</td>
+                                <td>£{{ item.product.get_price }}</td>
                                 <td>
                                     <div class="input-group mb-3" style="max-width: 120px;">
                                         <div class="input-group-prepend">
@@ -61,7 +61,7 @@
                                     </div>
                                 </td>
                                 <td>
-                                    ${{ item.get_total_item_price }}
+                                    £{{ item.get_total_item_price }}
                                 </td>
                                 <td>
                                     <a href="{% url 'cart:remove-from-cart' item.id %}"
@@ -110,7 +110,7 @@
                             <span class="text-black">Subtotal</span>
                         </div>
                         <div class="col-md-6">
-                            <strong class="text-black">${{ order.get_subtotal }}</strong>
+                            <strong class="text-black">£{{ order.get_subtotal }}</strong>
                         </div>
                     </div>
 
@@ -125,7 +125,7 @@
 
                     <div class="row">
                         <div class="col-md-12">
-                            <a class="btn btn-outline-primary btn-lg py-3 btn-block">Checkout</a>
+                            <a href="{% url 'cart:checkout' %}" class="btn btn-outline-primary btn-lg py-3 btn-block">Checkout</a>
                         </div>
                     </div>
 
