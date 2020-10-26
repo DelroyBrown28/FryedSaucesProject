@@ -6,13 +6,17 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12">
-                <a class="btn allstyles-button mb-4 mr-4" href="{% url 'profile' %}">Back To Account</a>
-                <a class="btn allstyles-button mb-4" href="{% url 'cart:product-list' %}">View Gallery</a>
+                {% if request.user.is_staff %}
+                <a class="btn allButtonStyles mb-4 mr-4" href="{% url 'staff:staff' %}">Back To Staff Portal</a>
+                {% else %}
+                <a class="btn allButtonStyles mb-4 mr-4" href="{% url 'profile' %}">Back To Account</a>
+                {% endif %}
+                <a class="btn allButtonStyles mb-4" href="{% url 'cart:product-list' %}">View Gallery</a>
                 <div class="card">
                     <div class="card-body" data-aos="fade">
                         <h5 class="card-title">
                             Order: {{ order.reference_number }}
-                            
+
                         </h5>
                         <h6 class="card-subtitle mb-2 text-muted">Ordered on: {{ order.ordered_date }}</h6>
                         <hr />
@@ -22,7 +26,7 @@
                                     <tr>
                                         <th>Product</th>
                                         <th>Total</th>
-                                        
+
                                     </tr>
                                 </thead>
                                 <tbody>
