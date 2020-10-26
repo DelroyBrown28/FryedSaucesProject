@@ -108,6 +108,13 @@ a:hover {
 
 }
 
+.allstyles-button {
+  color: #000;
+  border-radius: 0px;
+  border: 1px solid #000;
+  background-color: transparent !important;
+}
+
 
 .form-control {
   height: 43px;
