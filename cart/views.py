@@ -24,7 +24,7 @@ class ProductListView(generic.ListView):
     def get_context_data(self, **kwargs):
         context = super(ProductListView, self).get_context_data(**kwargs)
         context.update({
-            "categories": Category.objects.all()
+            "categories": Category.objects.values("name")
         })
         return context
 
@@ -37,7 +37,7 @@ class ProductDetailView(generic.FormView):
         return get_object_or_404(Product, slug=self.kwargs["slug"])
 
     def get_success_url(self):
-        return reverse("cart:summary")  # TODO: cart
+        return reverse("cart:summary")
 
     def get_form_kwargs(self):
         kwargs = super(ProductDetailView, self).get_form_kwargs()

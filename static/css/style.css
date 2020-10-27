@@ -6,7 +6,10 @@ body {
   font-size: 16px;
   font-family: 'Open Sans', sans-serif;
   /* font-family: 'Oswald', sans-serif; */
+}
 
+::-webkit-scrollbar {
+  display: none;
 }
 
 ::-moz-selection {
@@ -97,11 +100,11 @@ a:hover {
   letter-spacing: .2em;
 }
 
-.btn:hover {
+/* .btn:hover {
   -webkit-box-shadow: 0 5px 20px -7px rgba(0, 0, 0, 0.9) !important;
   box-shadow: 0 5px 20px -7px rgba(0, 0, 0, 0.9) !important;
-  top: -2px;
 }
+top: -2px; */
 
 #id_name,
 #id_email,
@@ -109,6 +112,7 @@ a:hover {
   width: 100%;
 
 }
+
 
 .allButtonStyles {
   color: #000;
@@ -129,14 +133,14 @@ a:hover {
   justify-content: center;
   flex-flow: column;
 
-  
+
 }
 
 .productTitle {
   font-size: 1.30em;
   font-family: 'Oswald', sans-serif;
   font-weight: 400;
-  
+
   color: #000;
 }
 
@@ -144,15 +148,15 @@ a:hover {
   font-size: 1.30em;
   color: #000;
   margin: 0;
-  
-  
+
+
 }
 
 .priceWrap {
   display: flex;
   align-items: center;
   justify-content: center;
-  
+
 }
 
 .priceSlash {
@@ -165,13 +169,30 @@ a:hover {
   flex-flow: row;
   height: 50px;
   justify-content: space-between;
-  
+
 }
 
 .productDescription {
   /* font-weight: bolder; */
   font-family: 'Open Sans', sans-serif;
 
+}
+
+.productSaveBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.paymentButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.googleButton {
+  width: 50%;
 }
 
 .form-control {
@@ -343,20 +364,22 @@ a:hover {
   position: absolute;
   top: 0;
   right: 0;
-  margin-right: -15px;
+  margin-right: -30px;
   margin-top: -20px;
   font-size: 13px;
-  width: 24px;
-  height: 24px;
+  width: 30px;
+  height: 30px;
   line-height: 24px;
+  border: 1px solid #000 !important;
   border-radius: 50%;
   display: block;
   text-align: center;
-  background: #1f4f7c;
-  color: #fff;
+  /* background: #1f4f7c; */
+  color: #000;
   -webkit-transition: .2s all ease-in-out;
   -o-transition: .2s all ease-in-out;
   transition: .2s all ease-in-out;
+
 }
 
 .site-navbar .site-top-icons ul li a:hover .count {
@@ -364,6 +387,8 @@ a:hover {
   box-shadow: 0 3px 10px -4px rgba(0, 0, 0, 0.3) !important;
   margin-top: -22px;
 }
+
+
 
 .site-navbar .site-top-icons ul li:last-child a {
   padding-right: 0;
@@ -733,7 +758,7 @@ a:hover {
 .site-blocks-cover,
 .site-blocks-cover .row {
   min-height: 400px;
-  height: calc(50vh - 174px);
+  height: calc(70vh - 174px);
 }
 
 .site-blocks-cover h1 {

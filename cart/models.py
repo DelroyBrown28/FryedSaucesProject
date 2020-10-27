@@ -59,7 +59,7 @@ class Product(models.Model):
     active = models.BooleanField(default=False)
     available_sizes = models.ManyToManyField(SizeVariation)
     primary_category = models.ForeignKey(
-        Category, related_name='primary_products', blank=True, on_delete=models.CASCADE)
+        Category, related_name='primary_products', blank=True, null=True, on_delete=models.SET_NULL)
     stock = models.IntegerField(default=0)
 
     def __str__(self):

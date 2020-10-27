@@ -40,6 +40,7 @@
     <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/aos.css' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
         integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
 </head>
@@ -64,16 +65,17 @@
                             <div class="site-top-icons">
                                 <ul>
                                     <li>
-                                        {% if request.user.is_authenticated %}
-                                        <a href="{% url 'profile' %}"><span><i class="fas fa-user"></i></span></a>
-                                        {% else %}
-                                        <a href="{% url 'account_login' %}"><span><i
-                                                    class="fas fa-sign-in-alt"></i></span></a>
+                                        {% if not request.user.is_authenticated %}
+                                        <a class="allButtonStyles btn" href="{% url 'profile' %}"><span>
+                                            Sign in</span></a>
+                                            {% else %}
+                                            <a href="{% url 'account_login' %}"><span>
+                                                <i class="material-icons">person</i></span></a>
                                         {% endif %}
                                     </li>
                                     <li>
                                         <a href="{% url 'cart:summary' %}" class="site-cart">
-                                            <span><i class="fas fa-shopping-cart"></i></span>
+                                            <span><i class="material-icons">shopping_basket</i></span>
                                             <span class="count">{{ request|cart_item_count }}</span>
                                         </a>
                                     </li>
