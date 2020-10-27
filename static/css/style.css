@@ -136,6 +136,20 @@ top: -2px; */
 
 }
 
+.igWrap {
+  border-left: 1px solid #000;
+  border-right: 1px solid #000;
+  
+}
+
+.igIcon {
+  display: flex !;
+  align-items: center !;
+  justify-content: center !;
+  
+  border: 1px solid red;
+}
+
 .productTitle {
   font-size: 1.30em;
   font-family: 'Oswald', sans-serif;
@@ -752,7 +766,7 @@ top: -2px; */
 .site-blocks-cover {
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: center center;
+  background-position: center;
 }
 
 .site-blocks-cover,
