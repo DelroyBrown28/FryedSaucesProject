@@ -10,17 +10,25 @@ User = get_user_model()
 
 class AddToCartForm(forms.ModelForm):
     size = forms.ModelChoiceField(queryset=SizeVariation.objects.none())
+    quantity = forms.IntegerField(min_value=1)
 
     class Meta:
         model = OrderItem
         fields = ['quantity', 'size']
 
     def __init__(self, *args, **kwargs):
-        product_id = kwargs.pop('product_id')
-        product = Product.objects.get(id=product_id)
+        self.product_id = kwargs.pop('product_id')
+        product = Product.objects.get(id=self.product_id)
         super().__init__(*args, **kwargs)
 
         self.fields['size'].queryset = product.available_sizes.all()
+
+    def clean(self):
+        product_id = self.product_id
+        product = Product.objects.get(id=self.product_id)
+        quantity = self.cleaned_data['quantity']
+        if product.stock <= quantity:
+            raise forms.ValidationError(f"Sorry, I only have {product.stock} of these available")
 
 
 class AddressForm(forms.Form):

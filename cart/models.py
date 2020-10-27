@@ -4,7 +4,18 @@ from django.db.models.signals import pre_save
 from django.shortcuts import reverse
 from django.utils.text import slugify
 
+
 User = get_user_model()
+
+
+class Category(models.Model):
+    name = models.CharField(max_length=100)
+
+    class Meta:
+        verbose_name_plural = "Categories"
+
+    def __str__(self):
+        return self.name
 
 
 class Address(models.Model):
@@ -47,6 +58,9 @@ class Product(models.Model):
     updated = models.DateTimeField(auto_now=True)
     active = models.BooleanField(default=False)
     available_sizes = models.ManyToManyField(SizeVariation)
+    primary_category = models.ForeignKey(
+        Category, related_name='primary_products', blank=True, on_delete=models.CASCADE)
+    stock = models.IntegerField(default=0)
 
     def __str__(self):
         return self.title
@@ -61,7 +75,11 @@ class Product(models.Model):
         return reverse("staff:product-delete", kwargs={'pk': self.pk})
 
     def get_price(self):
-        return "{:.2f}".format(self.price / 100)
+        return "{:.2f}".format(self.price)
+
+    @property
+    def in_stock(self):
+        return self.stock > 0
 
 
 class OrderItem(models.Model):
@@ -81,7 +99,7 @@ class OrderItem(models.Model):
     # but wanted to return the template version
     def get_total_item_price(self):
         price = self.get_raw_total_item_price()
-        return "{:.2f}".format(price / 100)
+        return "{:.2f}".format(price)
 
 
 class Order(models.Model):
@@ -111,7 +129,7 @@ class Order(models.Model):
 
     def get_subtotal(self):
         subtotal = self.get_raw_subtotal()
-        return"{:.2f}".format(subtotal / 100)
+        return"{:.2f}".format(subtotal)
 
     def get_raw_total(self):
         subtotal = self.get_raw_subtotal()
@@ -120,7 +138,7 @@ class Order(models.Model):
 
     def get_total(self):
         total = self.get_raw_total()
-        return"{:.2f}".format(total / 100)
+        return"{:.2f}".format(total)
 
 
 class Payment(models.Model):

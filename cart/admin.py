@@ -4,7 +4,8 @@ from .models import (Product,
                      Order,
                      SizeVariation,
                      Address,
-                     Payment)
+                     Payment,
+                     Category)
 
 
 class AdressAdmin(admin.ModelAdmin):
@@ -17,6 +18,7 @@ class AdressAdmin(admin.ModelAdmin):
     ]
 
 
+admin.site.register(Category)
 admin.site.register(Address, AdressAdmin)
 admin.site.register(SizeVariation)
 admin.site.register(Product)
