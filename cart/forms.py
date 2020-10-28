@@ -33,6 +33,12 @@ class AddToCartForm(forms.ModelForm):
 
 
 class AddressForm(forms.Form):
+    selected_shipping_address = forms.ModelChoiceField(
+        Address.objects.none(), required=False
+    )
+    selected_billing_address = forms.ModelChoiceField(
+        Address.objects.none(), required=False
+    )
     shipping_address_line_1 = forms.CharField(required=False)
     shipping_address_line_2 = forms.CharField(required=False)
     shipping_zip_code = forms.CharField(required=False)
@@ -41,13 +47,6 @@ class AddressForm(forms.Form):
     billing_address_line_2 = forms.CharField(required=False)
     billing_zip_code = forms.CharField(required=False)
     billing_city = forms.CharField(required=False)
-
-    selected_shipping_address = forms.ModelChoiceField(
-        Address.objects.none(), required=False
-    )
-    selected_billing_address = forms.ModelChoiceField(
-        Address.objects.none(), required=False
-    )
 
     def __init__(self, *args, **kwargs):
         user_id = kwargs.pop('user_id')

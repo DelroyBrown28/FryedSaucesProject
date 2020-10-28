@@ -45,9 +45,9 @@
             <div class="col-md-3 mb-4">
                 <div class="border p-4 rounded mb-4">
                     <h3 class="h6 text-uppercase text-black">Categories</h3>
-                    <ul>
+                    <ul class="categoryList">
                         {% for category in categories  %}
-                        <li class="mb-1">
+                        <li class="mb-4">
                             <a href="?category={{ category.name }}" class="d-flex">
                                 <span>{{ category.name }}</span>
                             </a>
