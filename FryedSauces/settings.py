@@ -1,6 +1,9 @@
 import os
 import environ
 
+# import dj_database_url
+
+
 env = environ.Env()
 environ.Env.read_env()
 
@@ -66,12 +69,28 @@ TEMPLATES = [
 WSGI_APPLICATION = 'FryedSauces.wsgi.application'
 
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+if 'DATABASE_URL' in env('SECRET_KEY'):
+    DATABASES = {
+        'default': dj_database_url.parse(env('DATABASE_URL'))
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
+    }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
+
+# DATABASES = {
+#     'default': dj_database_url.parse('postgres://qmvriwrxtzbmvt:84361c36b8499a51a1780a52a7011a8263fee9e1361af0e56e3cfc8d24926b2f@ec2-46-137-123-136.eu-west-1.compute.amazonaws.com:5432/dd4lb2poq1fgnc')
+# }
 
 
 AUTH_PASSWORD_VALIDATORS = [
