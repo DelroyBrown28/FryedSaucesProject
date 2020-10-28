@@ -197,7 +197,7 @@ top: -2px; */
 }
 
 .categoryList li {
-  border-left: 1px solid #000;
+  /* border-left: 1px solid #000; */
   padding-left: 5px;
 
 }
