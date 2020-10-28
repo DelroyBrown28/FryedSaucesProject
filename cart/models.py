@@ -51,9 +51,7 @@ class Product(models.Model):
     slug = models.SlugField(unique=True)
     image = models.ImageField(upload_to='product_images')
     description = models.TextField()
-    # I read that using an IntegerField is alot
-    # more accurate for prices and payments
-    price = models.IntegerField(default=0)
+    price = models.DecimalField(max_digits=6, decimal_places=2)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     active = models.BooleanField(default=False)

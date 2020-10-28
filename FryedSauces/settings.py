@@ -45,7 +45,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'RubyMoonProjectMain.urls'
+ROOT_URLCONF = 'FryedSauces.urls'
 
 TEMPLATES = [
     {
@@ -63,7 +63,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'RubyMoonProjectMain.wsgi.application'
+WSGI_APPLICATION = 'FryedSauces.wsgi.application'
 
 
 DATABASES = {
